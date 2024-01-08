@@ -1,19 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ProductContext } from "../../context/ProductProvider";
 
-const Category = () => {
-    const [checkedItems, setCheckedItems] = useState([]);
-    const { setProducts, allProducts } = useContext(ProductContext);
+const Category = ({setCheckedItems}) => {
+    const { allProducts } = useContext(ProductContext);
     const categories = [
       ...new Set(allProducts?.map((product) => product.category)),
     ];
-  
-    useEffect(()=>{
-      const data = allProducts?.filter(product=>checkedItems.includes(product.category))
-      if(checkedItems.length) setProducts(data)
-      else setProducts(allProducts)
-      
-    },[checkedItems])
   
     const handleChange = (e) => {
       e.target.checked

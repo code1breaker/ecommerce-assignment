@@ -1,16 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { ProductContext } from "../../context/ProductProvider";
+import { useContext } from "react";
 
-const Search = () => {
-  const [search, setSearch] = useState("");
-  const { setProducts, allProducts } = useContext(ProductContext);
-
-  useEffect(() => {
-    const filterData = allProducts?.filter((product) =>
-      product.title.toLowerCase().includes(search.toLowerCase())
-    );
-    setProducts(filterData);
-  }, [search]);
+const Search = ({search,setSearch}) => {
 
   return (
     <form className="border-[1px] p-1 border-black text-gray-700">
